@@ -8,6 +8,7 @@ export default function TransitionScreen(atr){
             <Logo>
                 moneyCare
             </Logo>
+            <Ad/>
         </Background>
     )
 }
