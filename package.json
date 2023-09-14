@@ -1,7 +1,7 @@
 {
   "homepage": "https://draxter-07.github.io/moneyCare",
   "name": "moneycare",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
