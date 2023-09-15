@@ -21,4 +21,9 @@ export const Background = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    ins{
+        display: block;
+        width: 250px;
+    }
 `
