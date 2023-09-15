@@ -8,14 +8,14 @@ export const Background = styled.div`
 
     box-shadow: ${atr => atr.top == "0px" ? "none" : `0px 0px 5px 1px ${colorDarkBlue}`};
 
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     z-index: 5;
     position: fixed;
     top: ${atr => atr.top};
 
-    transition: top 30s linear; 
+    transition: top 1s linear; 
 
     display: flex;
     flex-direction: column;
