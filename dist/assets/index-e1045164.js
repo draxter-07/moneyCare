@@ -345,6 +345,11 @@ Error generating stack: `+i.message+`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    ins{
+        display: block;
+        width: 250px;
+    }
 `,rv=ne.div`
     font-size: 50px;
     font-weight: bold;
