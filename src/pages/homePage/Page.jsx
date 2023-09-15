@@ -60,6 +60,28 @@ export default function StartPage(){
     ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
     ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
     ["00/00/00 - Transação", "R$ 15,00", redColorMoney]], 
+    [greenColorMoney, "R$ 15,00"]],
+    ["Extrato Mensal", 
+    [["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
+    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
+    ["00/00/00 - Transação", "R$ 15,00", redColorMoney]], 
     [greenColorMoney, "R$ 15,00"]]]
 
     return(
@@ -86,10 +108,8 @@ export default function StartPage(){
                         <InfoBas color={dado[0]}><div>{dado[1]}</div><div>{dado[2]}</div></InfoBas>
                     )}
                 </InformacoesBasicas>
-
+                {infoDet.map(dado =>
                 <InformacoesDetalhadas>
-                    {infoDet.map(dado =>
-                    <>
                         <InfoDet>
                             <Dets>
                                 <Titulo>{dado[0]}</Titulo>
@@ -166,9 +186,8 @@ export default function StartPage(){
                                 <line x1="80" x2="1020" y1="20" y2="20" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
                             </svg>
                         </Grafico>
-                    </>
-                    )}
                 </InformacoesDetalhadas>
+                )}
             </Menu>
         </Background>
         </>

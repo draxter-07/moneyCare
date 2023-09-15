@@ -332,14 +332,14 @@ Error generating stack: `+i.message+`
 
     box-shadow: ${e=>e.top=="0px"?"none":`0px 0px 5px 1px ${yt}`};
 
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 
     z-index: 5;
     position: fixed;
     top: ${e=>e.top};
 
-    transition: top 30s linear; 
+    transition: top 1s linear; 
 
     display: flex;
     flex-direction: column;
