@@ -22,7 +22,7 @@ export const Background = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center/
 `
 export const Topo = styled.div`
     box-sizing: border-box;
@@ -38,12 +38,23 @@ export const Topo = styled.div`
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+
+    @media (max-width: 1080px){
+        flex-direction: column;
+        align-items: center;
+    }
 `
 export const Logo = styled.div`
     padding: 0px 0px 0px 50px;
     font-size: ${fontSizeLarge};
     font-weight: bold;
     color: ${colorDarkBlue};
+
+    @media (max-width: 1080px){
+        font-size: 45px;
+        padding: 0px;
+        margin: 0px 0px 20px 0px;
+    }
 `
 export const LoginContainer = styled.div`
     @keyframes changeOpacity{
@@ -95,6 +106,10 @@ export const LoginContainer = styled.div`
             outline: none;
             border: 1px solid ${colorDarkGreen};
         }
+
+        @media (max-width: 1080px){
+            width: 100%;
+        }
     }
 
     input:nth-child(1){
@@ -122,6 +137,10 @@ export const LoginContainer = styled.div`
             background: ${colorDarkGreen};
             color: rgb(255, 255, 255);
         }
+    }
+
+    @media (max-width: 1080px){
+        width: 100%;
     }
 `
 export const SignUpContainer = styled.div`
