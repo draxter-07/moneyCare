@@ -115,7 +115,7 @@ Error generating stack: `+i.message+`
 
     display: flex;
     flex-direction: column;
-    align-items: center/
+    align-items: center;
 `,qm=ne.div`
     box-sizing: border-box;
 
