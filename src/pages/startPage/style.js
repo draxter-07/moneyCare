@@ -22,7 +22,7 @@ export const Background = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: center/
+    align-items: center;
 `
 export const Topo = styled.div`
     box-sizing: border-box;
