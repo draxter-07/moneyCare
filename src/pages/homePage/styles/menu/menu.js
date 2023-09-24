@@ -6,5 +6,4 @@ export const Menu = styled.div`
     flex-direction: column;
     width: 100%;
     height: fit-content;
-    padding: 40px 60px;
 `

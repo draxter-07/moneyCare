@@ -4,12 +4,10 @@ import { colorDarkGreen, colorDarkBlue, fontSizeMedium, fontSizeMediumLarge, fas
 export const Topo = styled.div`
     box-sizing: border-box;
 
-    position: relative;
-
     width: 100%;
     height: fit-content;
 
-    padding: 20px 70px;
+    margin: 0px 0px 40px 0px;
         
     display: flex;
     flex-direction: row;
@@ -49,14 +47,4 @@ export const TopoButton = styled.button`
     :hover{
         color: ${colorDarkBlue};
     }
-`
-export const ConfigDiv = styled.div`
-    display: ${atr => atr.display};
-    flex-direction: column;
-    z-index: 1;
-    position: absolute;
-
-    background: rgb(255, 255, 255);
-    padding: 20px;
-    border-radius: 5px;
 `

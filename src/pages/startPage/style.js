@@ -12,13 +12,11 @@ export const Background = styled.div`
     width: 100vw;
     height: 100vh;
 
+    padding: 20px;
+
     background: ${colorDarkGreen};
 
-    animation-name: changeBack;
-    animation-duration: ${backChangeTime};
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
+    animation: changeBack ${backChangeTime} infinite alternate linear;
 
     display: flex;
     flex-direction: column;
@@ -27,17 +25,13 @@ export const Background = styled.div`
 export const Topo = styled.div`
     box-sizing: border-box;
 
-    position: relative;
-
-    width: 100vw;
+    width: 100%;
     height: fit-content;
-
-    padding: 20px;
         
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
 
     @media (max-width: 1080px){
         flex-direction: column;
@@ -56,20 +50,7 @@ export const Logo = styled.div`
         margin: 0px 0px 20px 0px;
     }
 `
-export const LoginContainer = styled.div`
-    @keyframes changeOpacity{
-        0% {opacity: 0}
-        100% {opacity: 1}
-    }
-
-    opacity: 1;
-
-    animation-name: changeOpacity;
-    animation-duration: ${backChangeTime};
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-
+export const AcessContainer = styled.div`
     box-sizing: border-box;
     height: fit-content;
     width: fit-content;
@@ -88,33 +69,6 @@ export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    input{
-        font-size: ${fontSizeMedium};
-
-        margin: 10px 0px 0px 0px;
-        padding: 5px 10px;
-
-        border: 1px solid rgb(0, 0, 0, 0.2);
-        border-radius: 5px;
-
-        width: 200px;
-
-        transition: border ${fastTransition};
-
-        :focus-visible, :hover{
-            outline: none;
-            border: 1px solid ${colorDarkGreen};
-        }
-
-        @media (max-width: 1080px){
-            width: 100%;
-        }
-    }
-
-    input:nth-child(1){
-        margin: 30px 0px 0px 0px;
-    }
 
     button{
         width: fit-content;
@@ -139,120 +93,51 @@ export const LoginContainer = styled.div`
         }
     }
 
+    div{
+        margin: 20px 0px 0px 0px;
+    }
+
     @media (max-width: 1080px){
         width: 100%;
     }
 `
-export const SignUpContainer = styled.div`
-    box-sizing: border-box;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+export const Button = styled.div`
+    margin: 20px 0px 0px 0px;
+    padding: 5px 10px;
+    border-radius: 5px;
 
     background: rgb(255, 255, 255);
+    color: ${colorDarkBlue};
+
+    font-weight: bold;
+
+    transition: background ${fastTransition};
+
+    :hover{
+        background: ${colorDarkBlue};
+        color: rgb(255, 255, 255);
+    }
+`
+export const InputArea = styled.input`
+    font-size: ${fontSizeMedium};
+    display: ${atr => atr.$display ? "flex" : "none"};
+
+    margin: 10px 0px 0px 0px;
+    padding: 5px 10px;
+
+    border: 1px solid rgb(0, 0, 0, 0.2);
     border-radius: 5px;
-    padding: none;
-    margin: none;
 
-    height: fit-content;
-    width: fit-content;
+    width: 200px;
 
-    div:nth-child(1){
-        button{
-            width: fit-content;
+    transition: border ${fastTransition};
 
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: none;
-
-            font-size: ${fontSizeMedium};
-            font-weight: bold;
-
-            color: ${colorDarkGreen};
-            background: rgb(255, 255, 255);
-
-            transition: box-shadow ${fastTransition};
-
-            :hover{
-                box-shadow: 0px 0px 3px 2px ${colorDarkBlue};
-            }
-        }
+    :focus-visible, :hover{
+        outline: none;
+        border: 1px solid ${colorDarkGreen};
     }
 
-    div:nth-child(2){
-        display: ${atr => atr.display};
-        flex-direction: column;
-        align-items: flex-end;
-
-        background: rgb(255, 255, 255);
-        border-radius: 5px;
-        padding: 20px;
-
-        position: absolute;
-        z-index: 5;
-
-        height:  fit-content;
-        width: fit-content;
-
-        button{
-            border-radius: 5px;
-            border: none;
-            padding: none;
-
-            background: rgb(255, 255, 255);
-            color: ${colorDarkGreen};
-            font-weight: bold;
-
-            transition: color ${fastTransition};
-
-            font-size: ${fontSizeMedium};
-
-            :hover{
-                color: ${colorDarkBlue};
-            }
-        }
-
-        div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            width: 100%;
-
-            button{
-                margin: 20px 0px 0px 0px;
-                padding: 5px 10px;
-
-                background: ${colorDarkGreen};
-                color: rgb(255, 255, 255);
-
-                transition: background ${fastTransition};
-
-                :hover{
-                    background: ${colorDarkBlue};
-                    color: rgb(255, 255, 255);
-                }
-            }
-        }
-
-        input{
-            font-size: ${fontSizeMedium};
-
-            margin: 10px 0px 0px 0px;
-            padding: 5px 10px;
-
-            border: 1px solid rgb(0, 0, 0, 0.2);
-            border-radius: 5px;
-
-            width: 200px;
-
-            transition: border ${fastTransition};
-
-            :focus-visible, :hover{
-                outline: none;
-                border: 1px solid ${colorDarkGreen};
-            }
-        }
+    @media (max-width: 1080px){
+        width: 100%;
     }
 `

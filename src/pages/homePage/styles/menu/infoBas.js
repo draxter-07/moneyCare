@@ -8,6 +8,8 @@ export const InformacoesBasicas = styled.div`
     justify-content: flex-start;
     width: auto;
 
+    margin: 30px 0px 0px 0px;
+
     overflow: auto;
     ${webkitStyle}
 `

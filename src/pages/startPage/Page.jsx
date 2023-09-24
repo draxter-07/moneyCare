@@ -1,4 +1,4 @@
-import { Background, Topo, LoginContainer, SignUpContainer, Logo } from "./style.js"
+import { Background, Topo, AcessContainer, Logo, Button, InputArea } from "./style.js"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
@@ -8,7 +8,7 @@ import { homeURL } from "../../variablesValues.js"
 
 export default function StartPage(){
     const navigate = useNavigate()
-    const [openSignUp, setOpenSignUp] = useState("none");
+    const [openSignUp, setOpenSignUp] = useState(true);
     const [transitionChange, setTransitionChange] = useState("-100vh")
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -25,30 +25,20 @@ export default function StartPage(){
 
             <Topo>
                 <Logo>MoneyCare</Logo>
-                <SignUpContainer display={openSignUp}>
-                    <div>
-                        <button onClick={() => setOpenSignUp("flex")}>Sign up</button>
-                    </div>
-                    <div>
-                        <button onClick={() => setOpenSignUp("none")}>Voltar</button>
-                        <input placeholder="Nome"></input>
-                        <input placeholder="Email"></input>
-                        <input placeholder="Senha"></input>
-                        <input placeholder="Confirme sua senha"></input>
-                        <div>
-                            <button>Começar</button>
-                        </div>
-                    </div>
-                </SignUpContainer>
             </Topo>
 
-            <LoginContainer>
-                Acesse sua conta
-                <input placeholder="Email"></input>
-                <input placeholder="Senha"></input>
-                <button onClick={changeWindow}>Entrar</button>
-            </LoginContainer>
+            <AcessContainer>
+                    {openSignUp ? "Acesse sua conta" : "Crie sua conta"}
+                    <div>
+                        <InputArea placeholder="Nome" $display={!openSignUp}></InputArea>
+                        <InputArea placeholder="Email" $display={true}></InputArea>
+                        <InputArea placeholder="Senha" $display={true}></InputArea>
+                        <InputArea placeholder="Confirme sua senha" $display={!openSignUp}></InputArea>
+                    </div>
+                    <button onClick={changeWindow}>{openSignUp ? "Acessar" : "Criar"}</button>
+            </AcessContainer>
 
+            <Button onClick={() => setOpenSignUp(!openSignUp)}>{openSignUp ? "Criar conta" : "Acessar conta"}</Button>
         </Background>
         </>
     )

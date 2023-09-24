@@ -3,7 +3,6 @@ import { webkitStyle } from "../visualValues.js"
 
 const GeneralStyle = createGlobalStyle`
     body{
-
         *{
             font-family: 'Roboto', sans-serif;
         }

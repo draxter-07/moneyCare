@@ -11,14 +11,11 @@ export const Background = styled.div`
 
     width: 100%;
     height: 100%;
+    padding: 20px 70px;
 
     background: ${colorDarkGreen};
 
-    animation-name: changeBack;
-    animation-duration: ${atr => atr.blockBack ? "0s" : backChangeTime};
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
+    animation: changeBack ${atr => atr.blockBack ? "0s" : backChangeTime} infinite alternate linear;
 
     display: flex;
     flex-direction: column;

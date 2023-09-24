@@ -1,6 +1,7 @@
 import { Background } from "./styles/background/background.js"
-import { Topo, Logo, Topodiv, TopoButton, ConfigDiv } from "./styles/topo/topo.js"
+import { Topo, Logo, Topodiv, TopoButton } from "./styles/topo/topo.js"
 import { Menu } from "./styles/menu/menu.js"
+import { ConfigDiv } from "./styles/menu/config.js"
 import { InformacoesBasicas, InfoBas } from "./styles/menu/infoBas.js"
 import { InformacoesDetalhadas, InfoDet, Dets, Titulo, Linhas, Linha, Total } from "./styles/menu/infoDet.js"
 import { Grafico } from "./styles/menu/grafico.js"
@@ -16,7 +17,7 @@ export default function StartPage(){
     const blackColorMoney = "rgb(0, 0, 0)";
 
     const navigate = useNavigate()
-    const [openConfig, setOpenConfig] = useState("none");
+    const [openConfig, setOpenConfig] = useState(false);
     const [blockBackChange, setBlockBackChange] = useState(false);
     const [transitionChange, setTransitionChange] = useState("0px");
 
@@ -92,17 +93,18 @@ export default function StartPage(){
                 <Logo>MoneyCare</Logo>
                 <Topodiv>
                     <div>
-                        <TopoButton onClick={() => setOpenConfig("flex")}>Configurações</TopoButton>
+                        <TopoButton onClick={() => setOpenConfig(!openConfig)}>Configurações</TopoButton>
                     </div>
-                    <ConfigDiv display={openConfig}>
-                        <button onClick={() => setOpenConfig("none")}>Aqui</button>
-                        <button onClick={() => setBlockBackChange(true)}>Aqui2</button>
-                    </ConfigDiv>
                     <TopoButton onClick={changeWindow}>Sair</TopoButton>
                 </Topodiv>
             </Topo>
 
             <Menu>
+                <ConfigDiv $display={openConfig}>
+                    <button onClick={() => setOpenConfig(!openConfig)}>Aqui</button>
+                    <button onClick={() => setBlockBackChange(true)}>Aqui2</button>
+                </ConfigDiv>
+                
                 <InformacoesBasicas>
                     {infoBas.map(dado =>
                         <InfoBas color={dado[0]}><div>{dado[1]}</div><div>{dado[2]}</div></InfoBas>
