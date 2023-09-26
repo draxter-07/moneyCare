@@ -101,21 +101,20 @@ export const AcessContainer = styled.div`
         width: 100%;
     }
 `
-export const Button = styled.div`
+export const Button = styled.button`
     margin: 20px 0px 0px 0px;
     padding: 5px 10px;
     border-radius: 5px;
 
     background: rgb(255, 255, 255);
-    color: ${colorDarkBlue};
+    color: ${colorDarkGreen};
 
     font-weight: bold;
 
-    transition: background ${fastTransition};
+    transition: color ${fastTransition};
 
     :hover{
-        background: ${colorDarkBlue};
-        color: rgb(255, 255, 255);
+        color: ${colorDarkBlue};
     }
 `
 export const InputArea = styled.input`

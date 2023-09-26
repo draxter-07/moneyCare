@@ -101,8 +101,9 @@ export default function StartPage(){
 
             <Menu>
                 <ConfigDiv $display={openConfig}>
-                    <button onClick={() => setOpenConfig(!openConfig)}>Aqui</button>
-                    <button onClick={() => setBlockBackChange(true)}>Aqui2</button>
+                    <div>
+                        <button onClick={() => setBlockBackChange(!blockBackChange)}>parar fundo</button>
+                    </div>
                 </ConfigDiv>
                 
                 <InformacoesBasicas>

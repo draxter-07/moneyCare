@@ -5,13 +5,15 @@ export const InformacoesBasicas = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: auto;
-
-    margin: 30px 0px 0px 0px;
 
     overflow: auto;
     ${webkitStyle}
+
+    @media (max-width: 1080px){
+        flex-wrap: wrap;
+    }
 `
 export const InfoBas = styled.div`
     box-sizing: border-box;
@@ -26,7 +28,7 @@ export const InfoBas = styled.div`
     padding: 15px 18px;
     border-radius: 5px;
 
-    margin: 0px 15px 0px 0px;
+    margin: 30px 0px 0px 0px;
 
     div:nth-child(1){
         font-size: ${fontSizeMedium};

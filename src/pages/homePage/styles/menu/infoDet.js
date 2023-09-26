@@ -10,6 +10,10 @@ export const InformacoesDetalhadas = styled.div`
     width: auto;
     height: 440px;
     margin: 30px 0px 0px 0px;
+
+    @media (max-width: 1080px){
+        flex-direction: column;
+    }
 `
 export const InfoDet = styled.div`
     box-sizing: border-box;
@@ -22,8 +26,15 @@ export const InfoDet = styled.div`
     padding: 20px;
     border-radius: 5px;
 
+    margin: 0px 10px 0px 0px;
+
     width: 350px;
     height: auto;
+
+    @media (max-width: 1080px){
+        width: 100%;
+        margin: 0px;
+    }
 `
 export const Dets = styled.div`
     display: flex;
