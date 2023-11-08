@@ -13,7 +13,7 @@ export default function StartPage(){
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeWindow(){
-        setTransitionChange("0px"); 
+        setTransitionChange("0vh"); 
         await sleep(1000);
         navigate(homeURL);
     }
@@ -24,7 +24,7 @@ export default function StartPage(){
         <Background>
 
             <Topo>
-                <Logo>MonCa</Logo>
+                <Logo>MoneyCare</Logo>
             </Topo>
 
             <AcessContainer>

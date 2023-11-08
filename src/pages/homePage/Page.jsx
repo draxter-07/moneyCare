@@ -19,7 +19,7 @@ export default function StartPage(){
     const navigate = useNavigate()
     const [openConfig, setOpenConfig] = useState(false);
     const [blockBackChange, setBlockBackChange] = useState(false);
-    const [transitionChange, setTransitionChange] = useState("0px");
+    const [transitionChange, setTransitionChange] = useState("0vh");
 
     const infoBas = [[greenColorMoney, "Saldo mensal", "R$ 50,00"], 
     [blackColorMoney, "Despesas mensais", "R$ 50,00"], 
@@ -27,13 +27,13 @@ export default function StartPage(){
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeTrans(){
-        await sleep(2000);
+        await sleep(1000);
         setTransitionChange("-100vh");
     }
 
     async function changeWindow(){
-        setTransitionChange("0px");
-        await sleep(1500);
+        setTransitionChange("0vh");
+        await sleep(1000);
         navigate("/");
     }
 
@@ -90,7 +90,7 @@ export default function StartPage(){
         <TransitionScreen top={transitionChange}/>
         <Background blockBack={blockBackChange}>
             <Topo>
-                <Logo>MonCa</Logo>
+                <Logo>MoneyCare</Logo>
                 <Topodiv>
                     <div>
                         <TopoButton onClick={() => setOpenConfig(!openConfig)}>Configurações</TopoButton>
@@ -111,8 +111,9 @@ export default function StartPage(){
                         <InfoBas color={dado[0]}><div>{dado[1]}</div><div>{dado[2]}</div></InfoBas>
                     )}
                 </InformacoesBasicas>
+
                 {infoDet.map(dado =>
-                <InformacoesDetalhadas>
+                    <InformacoesDetalhadas>
                         <InfoDet>
                             <Dets>
                                 <Titulo>{dado[0]}</Titulo>
@@ -124,72 +125,82 @@ export default function StartPage(){
                                     </Linha>
                                 )}
                                 </Linhas>
-                            </Dets>
+                             </Dets>
                             <Total color={dado[2][0]}>{dado[2][1]}</Total>
                         </InfoDet>
+
                         <Grafico>
                             <svg>
-                                <g>
-                                    <path d={`M80 420 L${80 + 1*78.33} 420 L${80 + 2*78.33} 420 L${80 + 3*78.33} 420 L${80 + 4*78.33} 420 L${80 + 5*78.33} 420 L${80 + 6*78.33} 420 L${80 + 7*78.33} 420 L${80 + 8*78.33} 420 L${80 + 9*78.33} 420 L${80 + 10*78.33} 420 L${80 + 11*78.33} 200 L1020 20`} stroke="rgb(0, 0, 0)" fill="rgb(255, 255, 255)"/>
-                                </g>
                                 <g>       
-                                    <circle cx={"2%"} cy={420} r="5">
+                                    <circle cx={"5%"} cy={"95%"} r="5">
                                         <title>03/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 1*78.33} cy={420} r="5">
+                                    <circle cx={"12.5%"} cy={"95%"} r="5">
                                         <title>04/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <circle cx={80 + 2*78.33} cy={420} r="5">
+                                    </circle>
+                                    <line x1="5%" x2="12.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"20%"} cy={"95%"} r="5">
                                         <title>05/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 3*78.33} cy={420} r="5">
+                                    <line x1="12.5%" x2="20%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"27.5%"} cy={"95%"} r="5">
                                         <title>06/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 4*78.33} cy={420} r="5">
+                                    <line x1="20%" x2="27.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"35%"} cy={"95%"} r="5">
                                         <title>07/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 5*78.33} cy={420} r="5">
+                                    <line x1="27.5%" x2="35%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"42.5%"} cy={"95%"} r="5">
                                         <title>08/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 6*78.33} cy={420} r="5">
+                                    <line x1="35%" x2="42.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"50%"} cy={"95%"} r="5">
                                         <title>09/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 7*78.33} cy={420} r="5">
+                                    <line x1="42.5%" x2="50%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"57.5%"} cy={"95%"} r="5">
                                         <title>10/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 8*78.33} cy={420} r="5">
+                                    <line x1="50%" x2="57.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"65%"} cy={"95%"} r="5">
                                         <title>11/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 9*78.33} cy={420} r="5">
+                                    <line x1="57.5%" x2="65%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"72.5%"} cy={"95%"} r="5">
                                         <title>12/2022 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 10*78.33} cy={420} r="5">
+                                    <line x1="65%" x2="72.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"80%"} cy={"95%"} r="5">
                                         <title>01/2023 - R$ 0,00</title>
                                     </circle> 
-                                    <circle cx={80 + 11*78.33} cy={200} r="5">
+                                    <line x1="72.5%" x2="80%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"87.5%"} cy={"50%"} r="5">
                                         <title>02/2023 - R$ 230,00</title>
                                     </circle>
-                                    <circle cx={80 + 12*78.33} cy={20} r="5">
+                                    <line x1="80%" x2="87.5%" y1="95%" y2="50%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                    <circle cx={"95%"} cy={"5%"} r="5">
                                         <title>03/2023 - R$ 430,00</title>
                                     </circle>
+                                    <line x1="87.5%" x2="95%" y1="50%" y2="5%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
                                 </g>
-                                <text x="10" y="425" font-size="12px">R$ 0,00</text>
-                                <line x1="80" x2="1020" y1="420" y2="420" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
+                                <text x="0.5%" y="96%" font-size="12px">R$ 0</text>
+                                <line x1="5%" x2="95%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
 
-                                <text x="10" y="325" font-size="12px">R$ ?,00</text>
-                                <line x1="80" x2="1020" y1="320" y2="320" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
+                                <text x="0.5%" y="73.5%" font-size="12px">R$ ?</text>
+                                <line x1="5%" x2="95%" y1="72.5%" y2="72.5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
 
-                                <text x="10" y="225" font-size="12px">R$ ?,00</text>
-                                <line x1="80" x2="1020" y1="220" y2="220" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
+                                <text x="0.5%" y="51%" font-size="12px">R$ ?</text>
+                                <line x1="5%" x2="95%" y1="50%" y2="50%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
 
-                                <text x="10" y="125" font-size="12px">R$ ?,00</text>
-                                <line x1="80" x2="1020" y1="120" y2="120" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
+                                <text x="0.5%" y="28.5%" font-size="12px">R$ ?</text>
+                                <line x1="5%" x2="95%" y1="27.5%" y2="27.5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
 
-                                <text x="10" y="25" font-size="12px">R$ 430,00</text>
-                                <line x1="80" x2="1020" y1="20" y2="20" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
+                                <text x="0.5%" y="6%" font-size="12px">R$ 430</text>
+                                <line x1="5%" x2="95%" y1="5%" y2="5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
                             </svg>
                         </Grafico>
-                </InformacoesDetalhadas>
+                    </InformacoesDetalhadas>
                 )}
             </Menu>
         </Background>
