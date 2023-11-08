@@ -24,7 +24,7 @@ export default function StartPage(){
         <Background>
 
             <Topo>
-                <Logo>MoneyCare</Logo>
+                <Logo>MonCa</Logo>
             </Topo>
 
             <AcessContainer>

@@ -90,7 +90,7 @@ export default function StartPage(){
         <TransitionScreen top={transitionChange}/>
         <Background blockBack={blockBackChange}>
             <Topo>
-                <Logo>MoneyCare</Logo>
+                <Logo>MonCa</Logo>
                 <Topodiv>
                     <div>
                         <TopoButton onClick={() => setOpenConfig(!openConfig)}>Configurações</TopoButton>
