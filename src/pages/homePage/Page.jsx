@@ -95,6 +95,9 @@ export default function StartPage(){
                 <Logo>MoneyCare</Logo>
                 <Topodiv>
                     <div>
+                        <TopoButton onClick={() => setOpenConfig(!openConfig)}>?</TopoButton>
+                    </div>
+                    <div>
                         <TopoButton onClick={() => setOpenConfig(!openConfig)}>Configurações</TopoButton>
                     </div>
                     <TopoButton onClick={changeWindow}>Sair</TopoButton>
