@@ -5,7 +5,7 @@ import { ConfigDiv } from "./styles/menu/config.js"
 import { InformacoesBasicas, InfoBas, NewTrans, NewTransDiv } from "./styles/menu/infoBas.js"
 import { InformacoesDetalhadas, InfoDet, Dets, Titulo, Linhas, Linha, Total } from "./styles/menu/infoDet.js"
 import { Grafico } from "./styles/menu/grafico.js"
-import plusIMG from "../../imgs/+.png"
+import plusIMG from "../../imgs/plusIcon.png"
 
 import TransitionScreen from "../transitionScreen/Page.jsx"
 
