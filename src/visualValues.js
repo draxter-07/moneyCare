@@ -3,6 +3,7 @@ export const colorSoftGreen = "rgb(110, 200, 150)";
 export const colorDarkBlue = "rgb(50, 80, 200)";
 
 export const fontSizeLarge = "100px";
+export const fontSizePlus = "55px"
 export const fontSizeMediumLarge = "28px";
 export const fontSizeMedium = "17px";
 

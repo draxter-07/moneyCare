@@ -2,9 +2,10 @@ import { Background } from "./styles/background/background.js"
 import { Topo, Logo, Topodiv, TopoButton } from "./styles/topo/topo.js"
 import { Menu } from "./styles/menu/menu.js"
 import { ConfigDiv } from "./styles/menu/config.js"
-import { InformacoesBasicas, InfoBas, NewTrans } from "./styles/menu/infoBas.js"
+import { InformacoesBasicas, InfoBas, NewTrans, NewTransDiv } from "./styles/menu/infoBas.js"
 import { InformacoesDetalhadas, InfoDet, Dets, Titulo, Linhas, Linha, Total } from "./styles/menu/infoDet.js"
 import { Grafico } from "./styles/menu/grafico.js"
+import plusIMG from "../../imgs/+.png"
 
 import TransitionScreen from "../transitionScreen/Page.jsx"
 
@@ -20,6 +21,7 @@ export default function StartPage(){
     const [openConfig, setOpenConfig] = useState(false);
     const [blockBackChange, setBlockBackChange] = useState(false);
     const [transitionChange, setTransitionChange] = useState("0vh");
+    const [openNewTrans, setOpenNewTrans] = useState(false);
 
     const infoBas = [[greenColorMoney, "Saldo mensal", "R$ 50,00"], 
     [blackColorMoney, "Despesas mensais", "R$ 50,00"], 
@@ -110,8 +112,13 @@ export default function StartPage(){
                     {infoBas.map(dado =>
                         <InfoBas color={dado[0]}><div>{dado[1]}</div><div>{dado[2]}</div></InfoBas>
                     )}
-                    <NewTrans>Adicionar transação</NewTrans>
+                    <NewTrans onClick={() => setOpenNewTrans(!openNewTrans)}><img src={plusIMG}></img></NewTrans>
                 </InformacoesBasicas>
+                <NewTransDiv $display={openNewTrans}>
+                    <div>
+                        <button onClick={() => setBlockBackChange(!blockBackChange)}>parar fundo</button>
+                    </div>
+                </NewTransDiv>
 
                 {infoDet.map(dado =>
                     <InformacoesDetalhadas>

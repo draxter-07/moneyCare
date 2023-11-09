@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { fastTransition } from "../../../../visualValues"
 
 
 export const ConfigDiv = styled.div`
@@ -10,7 +11,7 @@ export const ConfigDiv = styled.div`
     margin: 30px 0px 0px;
     overflow: hidden;
 
-    transition: max-height 1s linear;
+    transition: max-height ${fastTransition} linear;
 
     div{
         box-sizing: border-box;
