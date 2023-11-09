@@ -17,5 +17,17 @@ export const Grafico = styled.div`
                 font-size: 200px;
             }
         }
+        text{
+            font-size: 13px;
+        }
+     }
+
+     @media (max-width: 1080px){
+        height: 30%;
+        svg{
+            text{
+                font-size: 7px;
+            }
+        }
      }
 `

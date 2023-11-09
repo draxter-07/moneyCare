@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { fontSizeMedium, fontSizeMediumLarge, webkitStyle } from "../../../../visualValues"
+import { colorDarkGreen, fontSizeMedium, fontSizeMediumLarge, webkitStyle } from "../../../../visualValues"
 
 export const InformacoesDetalhadas = styled.div`
     box-sizing: border-box;
@@ -13,6 +13,7 @@ export const InformacoesDetalhadas = styled.div`
 
     @media (max-width: 1080px){
         flex-direction: column;
+        height: 600px;
     }
 `
 export const InfoDet = styled.div`
@@ -33,12 +34,14 @@ export const InfoDet = styled.div`
 
     @media (max-width: 1080px){
         width: 100%;
-        margin: 0px;
+        height: 70%;
+        margin: 0px 0px 10px 0px;
     }
 `
 export const Dets = styled.div`
     display: flex;
     flex-direction: column;
+    height: 90%;
 `
 export const Titulo = styled.div`
     font-size: ${fontSizeMediumLarge};
@@ -51,9 +54,9 @@ export const Linhas = styled.div`
     justify-content: flex-start;
 
     width: auto;
-    height: 300px;
+    height: 100%;
 
-    overflow: auto;
+    overflow: scroll;
     ${webkitStyle}
 `
 export const Total = styled.div`
