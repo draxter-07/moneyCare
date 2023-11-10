@@ -10,7 +10,8 @@ import plusIMG from "../../imgs/plusIcon.png"
 import TransitionScreen from "../transitionScreen/Page.jsx"
 
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axios from "axios"
 
 export default function StartPage(){
     const greenColorMoney = "rgb(0, 200, 150)";
@@ -22,10 +23,16 @@ export default function StartPage(){
     const [blockBackChange, setBlockBackChange] = useState(false);
     const [transitionChange, setTransitionChange] = useState("0vh");
     const [openNewTrans, setOpenNewTrans] = useState(false);
+    const [infoBas, setInfoBas] = useState([]);
+    const [infoDet, setInfoDet] = useState([]);
+    const [infoGraph, setInfoGraph] = useState([]);
 
-    const infoBas = [[greenColorMoney, "Saldo mensal", "R$ 50,00"], 
-    [blackColorMoney, "Despesas mensais", "R$ 50,00"], 
-    [blackColorMoney, "Ganhos mensais", "R$ 100,00"]]
+    useEffect(() => {
+        axios.get("http://localhost:5000/home")
+            .then(resposta => {setInfoBas(resposta.data.infoBas); setInfoDet(resposta.data.infoDet); setInfoGraph(resposta.data.infoGraph)})
+            .catch(response => alert(response.message));
+        }, []
+    );
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeTrans(){
@@ -40,52 +47,6 @@ export default function StartPage(){
     }
 
     changeTrans();
-
-    const infoDet = 
-    [["Extrato Mensal", 
-    [["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney]], 
-    [greenColorMoney, "R$ 15,00"]],
-    ["Extrato Mensal", 
-    [["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney], 
-    ["00/00/00 - Transação", "R$ 30,00", greenColorMoney], 
-    ["00/00/00 - Transação", "R$ 15,00", redColorMoney]], 
-    [greenColorMoney, "R$ 15,00"]]]
 
     return(
         <>
@@ -142,58 +103,14 @@ export default function StartPage(){
 
                         <Grafico>
                             <svg>
-                                <g>       
-                                    <circle cx={"5%"} cy={"95%"} r="0.5%">
-                                        <title>03/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <circle cx={"12.5%"} cy={"95%"} r="0.5%">
-                                        <title>04/2022 - R$ 0,00</title>
-                                    </circle>
-                                    <line x1="5%" x2="12.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"20%"} cy={"95%"} r="0.5%">
-                                        <title>05/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="12.5%" x2="20%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"27.5%"} cy={"95%"} r="0.5%">
-                                        <title>06/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="20%" x2="27.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"35%"} cy={"95%"} r="0.5%">
-                                        <title>07/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="27.5%" x2="35%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"42.5%"} cy={"95%"} r="0.5%">
-                                        <title>08/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="35%" x2="42.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"50%"} cy={"95%"} r="0.5%">
-                                        <title>09/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="42.5%" x2="50%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"57.5%"} cy={"95%"} r="0.5%">
-                                        <title>10/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="50%" x2="57.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"65%"} cy={"95%"} r="0.5%">
-                                        <title>11/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="57.5%" x2="65%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"72.5%"} cy={"95%"} r="0.5%">
-                                        <title>12/2022 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="65%" x2="72.5%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"80%"} cy={"95%"} r="0.5%">
-                                        <title>01/2023 - R$ 0,00</title>
-                                    </circle> 
-                                    <line x1="72.5%" x2="80%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"87.5%"} cy={"50%"} r="0.5%">
-                                        <title>02/2023 - R$ 230,00</title>
-                                    </circle>
-                                    <line x1="80%" x2="87.5%" y1="95%" y2="50%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
-                                    <circle cx={"95%"} cy={"5%"} r="0.5%">
-                                        <title>03/2023 - R$ 430,00</title>
-                                    </circle>
-                                    <line x1="87.5%" x2="95%" y1="50%" y2="5%" stroke-width="1" stroke="rgb(0, 0, 0)"></line>
+                                <g>     
+                                    {infoGraph.map(data =>
+                                    <>
+                                        <circle cx={data.cx} cy={data.porcentage} r="0.5%">
+                                            <title>{data.title}</title>
+                                        </circle>
+                                    </>
+                                    )}
                                 </g>
                                 <text x="0.5%" y="96%">R$ 0</text>
                                 <line x1="5%" x2="95%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
