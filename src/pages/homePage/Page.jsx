@@ -14,10 +14,6 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 export default function StartPage(){
-    const greenColorMoney = "rgb(0, 200, 150)";
-    const redColorMoney = "rgb(240, 0, 0)";
-    const blackColorMoney = "rgb(0, 0, 0)";
-
     const navigate = useNavigate()
     const [openConfig, setOpenConfig] = useState(false);
     const [blockBackChange, setBlockBackChange] = useState(false);
@@ -26,13 +22,6 @@ export default function StartPage(){
     const [infoBas, setInfoBas] = useState([]);
     const [infoDet, setInfoDet] = useState([]);
     const [infoGraph, setInfoGraph] = useState([]);
-
-    useEffect(() => {
-        axios.get("http://localhost:5000/home")
-            .then(resposta => {setInfoBas(resposta.data.infoBas); setInfoDet(resposta.data.infoDet); setInfoGraph(resposta.data.infoGraph)})
-            .catch(response => alert(response.message));
-        }, []
-    );
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeTrans(){
@@ -46,7 +35,16 @@ export default function StartPage(){
         navigate("/");
     }
 
-    changeTrans();
+    useEffect(() => {
+        axios.get("http://localhost:5000/home")
+            .then(resposta => {
+                setInfoBas(resposta.data.infoBas); 
+                setInfoDet(resposta.data.infoDet); 
+                setInfoGraph(resposta.data.infoGraph); 
+                changeTrans()})
+            .catch(response => alert(response.message));
+        }, []
+    );
 
     return(
         <>
@@ -104,27 +102,22 @@ export default function StartPage(){
                         <Grafico>
                             <svg>
                                 <g>     
-                                    {infoGraph.map(data =>
+                                    {infoGraph.body.map(data =>
                                     <>
                                         <circle cx={data.cx} cy={data.porcentage} r="0.5%">
                                             <title>{data.title}</title>
                                         </circle>
+                                        {infoGraph.body.indexOf(data) > 0 ? <line x1={infoGraph.body[infoGraph.body.indexOf(data) - 1].cx} x2={data.cx} y1={infoGraph.body[infoGraph.body.indexOf(data) - 1].porcentage} y2={data.porcentage} stroke-width="1" stroke="rgb(0, 0, 0)"></line> : <></>}
                                     </>
                                     )}
                                 </g>
-                                <text x="0.5%" y="96%">R$ 0</text>
+                                {infoGraph.lateral.map(data =>
+                                    <text x="0.5%" y={data.y}>{data.value}</text>
+                                )}
                                 <line x1="5%" x2="95%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
-
-                                <text x="0.5%" y="73.5%">R$ ?</text>
                                 <line x1="5%" x2="95%" y1="72.5%" y2="72.5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
-
-                                <text x="0.5%" y="51%">R$ ?</text>
                                 <line x1="5%" x2="95%" y1="50%" y2="50%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
-
-                                <text x="0.5%" y="28.5%">R$ ?</text>
                                 <line x1="5%" x2="95%" y1="27.5%" y2="27.5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
-
-                                <text x="0.5%" y="6%">R$ 430</text>
                                 <line x1="5%" x2="95%" y1="5%" y2="5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
                             </svg>
                         </Grafico>
