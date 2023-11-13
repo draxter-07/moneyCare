@@ -21,7 +21,10 @@ export default function StartPage(){
     const [openNewTrans, setOpenNewTrans] = useState(false);
     const [infoBas, setInfoBas] = useState([]);
     const [infoDet, setInfoDet] = useState([]);
-    const [infoGraph, setInfoGraph] = useState([]);
+
+    const greenColorMoney = "rgb(0, 200, 150)";
+    const redColorMoney = "rgb(240, 0, 0)";
+    const blackColorMoney = "rgb(0, 0, 0)";
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeTrans(){
@@ -35,12 +38,20 @@ export default function StartPage(){
         navigate("/");
     }
 
+    function returnType(type){
+        if(type == 0){
+            return redColorMoney;
+        }
+        else{
+            return greenColorMoney;
+        }
+    }
+
     useEffect(() => {
         axios.get("http://localhost:5000/home")
             .then(resposta => {
                 setInfoBas(resposta.data.infoBas); 
                 setInfoDet(resposta.data.infoDet); 
-                setInfoGraph(resposta.data.infoGraph); 
                 changeTrans()})
             .catch(response => alert(response.message));
         }, []
@@ -72,13 +83,13 @@ export default function StartPage(){
                 
                 <InformacoesBasicas>
                     {infoBas.map(dado =>
-                        <InfoBas color={dado[0]}><div>{dado[1]}</div><div>{dado[2]}</div></InfoBas>
+                        <InfoBas color={returnType(dado.type)}><div>{dado.name}</div><div>{dado.value}</div></InfoBas>
                     )}
                     <NewTrans onClick={() => setOpenNewTrans(!openNewTrans)}><img src={plusIMG}></img></NewTrans>
                 </InformacoesBasicas>
                 <NewTransDiv $display={openNewTrans}>
                     <div>
-                        <button onClick={() => setBlockBackChange(!blockBackChange)}>parar fundo</button>
+                        <button onClick={() => setBlockBackChange(!blockBackChange)}>nova transação</button>
                     </div>
                 </NewTransDiv>
 
@@ -86,32 +97,32 @@ export default function StartPage(){
                     <InformacoesDetalhadas>
                         <InfoDet>
                             <Dets>
-                                <Titulo>{dado[0]}</Titulo>
+                                <Titulo>{dado.category}</Titulo>
                                 <Linhas>
-                                {dado[1].map(valor =>
-                                    <Linha color={valor[2]}>
-                                        <div>{valor[0]}</div>
-                                        <div>{valor[1]}</div>
+                                {dado.transactions.map(valor =>
+                                    <Linha color={returnType(valor.type)}>
+                                        <div>{valor.name}</div>
+                                        <div>{valor.value}</div>
                                     </Linha>
                                 )}
                                 </Linhas>
                              </Dets>
-                            <Total color={dado[2][0]}>{dado[2][1]}</Total>
+                            <Total color={returnType(dado.result.type)}>{dado.result.value}</Total>
                         </InfoDet>
 
                         <Grafico>
                             <svg>
                                 <g>     
-                                    {infoGraph.body.map(data =>
+                                    {dado.graph.body.map(data =>
                                     <>
                                         <circle cx={data.cx} cy={data.porcentage} r="0.5%">
                                             <title>{data.title}</title>
                                         </circle>
-                                        {infoGraph.body.indexOf(data) > 0 ? <line x1={infoGraph.body[infoGraph.body.indexOf(data) - 1].cx} x2={data.cx} y1={infoGraph.body[infoGraph.body.indexOf(data) - 1].porcentage} y2={data.porcentage} stroke-width="1" stroke="rgb(0, 0, 0)"></line> : <></>}
+                                        {dado.graph.body.indexOf(data) > 0 ? <line x1={dado.graph.body[dado.graph.body.indexOf(data) - 1].cx} x2={data.cx} y1={dado.graph.body[dado.graph.body.indexOf(data) - 1].porcentage} y2={data.porcentage} stroke-width="1" stroke="rgb(0, 0, 0)"></line> : <></>}
                                     </>
                                     )}
                                 </g>
-                                {infoGraph.lateral.map(data =>
+                                {dado.graph.lateral.map(data =>
                                     <text x="0.5%" y={data.y}>{data.value}</text>
                                 )}
                                 <line x1="5%" x2="95%" y1="95%" y2="95%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>

@@ -29,8 +29,10 @@ export const InfoDet = styled.div`
 
     margin: 0px 10px 0px 0px;
 
-    width: 350px;
+    width: 30%;
     height: auto;
+
+    overflow: hidden;
 
     @media (max-width: 1080px){
         width: 100%;
@@ -78,12 +80,13 @@ export const Linha = styled.div`
     padding: 8px 0px;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 
     font-size: ${fontSizeMedium};
 
     div:nth-child(2){
         color: ${atr => atr.color};
+        margin: 5px 0px 0px 0px;
     }
 `
