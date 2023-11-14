@@ -21,6 +21,7 @@ export default function StartPage(){
     const [openNewTrans, setOpenNewTrans] = useState(false);
     const [infoBas, setInfoBas] = useState([]);
     const [infoDet, setInfoDet] = useState([]);
+    const Dat = new Date();
 
     const greenColorMoney = "rgb(0, 200, 150)";
     const redColorMoney = "rgb(240, 0, 0)";
@@ -89,7 +90,13 @@ export default function StartPage(){
                 </InformacoesBasicas>
                 <NewTransDiv $display={openNewTrans}>
                     <div>
-                        <button onClick={() => setBlockBackChange(!blockBackChange)}>nova transação</button>
+                        <input placeholder="Nome da transação"></input>
+                        <input placeholder="Categorias"></input>
+                        <button>Ganho</button>
+                        <button>Despesa</button>
+                        <input placeholder="Valor"></input>
+                        <input placeholder={Dat.getDate() + "/" + (Dat.getMonth() + 1) + "/" + Dat.getFullYear()}></input>
+                        <button>Enviar</button>
                     </div>
                 </NewTransDiv>
 
