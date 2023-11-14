@@ -9,7 +9,6 @@ const GeneralStyle = createGlobalStyle`
     }
 
     input{
-        margin: 10px 0px 0px 0px;
         padding: 5px 10px;
 
         border: 1px solid rgb(0, 0, 0, 0.2);

@@ -91,7 +91,10 @@ export default function StartPage(){
                 <NewTransDiv $display={openNewTrans}>
                     <div>
                         <input placeholder="Nome da transação"></input>
-                        <input placeholder="Categorias"></input>
+                        {infoDet.map(categories =>
+                            <button>{categories.category}</button>
+                        )}
+                        <button>Adicionar nova categoria</button>
                         <button>Ganho</button>
                         <button>Despesa</button>
                         <input placeholder="Valor"></input>

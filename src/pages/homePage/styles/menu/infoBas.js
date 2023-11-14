@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { fastTransition, fontSizeMedium, fontSizeMediumLarge, fontSizePlus, webkitStyle } from "../../../../visualValues"
+import { mediumTransition, fontSizeMedium, fontSizeMediumLarge, fontSizePlus, webkitStyle } from "../../../../visualValues"
 
 export const InformacoesBasicas = styled.div`
     box-sizing: border-box;
@@ -54,7 +54,7 @@ export const NewTrans = styled.button`
 
     img{
         height: ${fontSizePlus};
-        transition: transform ${fastTransition} linear;
+        transition: transform ${mediumTransition} linear;
     }
 
     :hover{
@@ -71,19 +71,23 @@ export const NewTransDiv = styled.div`
 
     width: 100%;
 
-    max-height: ${atr => atr.$display ? "100px" : "0px"};
+    max-height: ${atr => atr.$display ? "500px" : "0px"};
     border-radius: 5px;
     margin: 30px 0px 0px;
 
     overflow: hidden;
 
-    transition: max-height ${fastTransition} linear;
+    transition: max-height ${mediumTransition} linear;
 
     div{
+        display: flex;
+        flex-direction: column;
         padding: 20px;
         input{
             font-size: ${fontSizeMedium};
-            margin: 0px;
+        }
+        *{
+            margin: 10px 0px 0px 0px;
         }
     }
 `

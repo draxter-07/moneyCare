@@ -85,6 +85,7 @@ export const AcessContainer = styled.div`
 `
 export const Button = styled.button`
     padding: 5px 10px;
+    margin: 20px 0px 0px 0px;
     border-radius: 5px;
 
     background: rgb(255, 255, 255);
@@ -95,14 +96,15 @@ export const Button = styled.button`
     transition: color ${fastTransition};
 
     :hover{
-        color: ${colorDarkBlue};    
+        color: ${colorDarkBlue}; 
+        background: rgb(255, 255, 255);   
     }
 `
 export const InputArea = styled.input`
     display: ${atr => atr.$display ? "flex" : "none"};
     font-size: ${fontSizeMedium};
     width: 200px;
-
+    margin: 10px 0px 0px 0px;
     @media (max-width: 1080px){
         width: 100%;
     }
