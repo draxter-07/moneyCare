@@ -107,7 +107,7 @@ export default function StartPage(){
                                 )}
                                 </Linhas>
                              </Dets>
-                            <Total color={returnType(dado.result.type)}>{dado.result.value}</Total>
+                            <Total color={returnType(dado.result.type)}>{dado.transactions.length == 0 ? "Sem transações ainda" : dado.result.value}</Total>
                         </InfoDet>
 
                         <Grafico>
