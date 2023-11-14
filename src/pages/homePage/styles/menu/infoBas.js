@@ -61,6 +61,7 @@ export const NewTrans = styled.button`
         img{
             transform: rotate(90deg);
         }
+        background: rgb(255, 255, 255);
     }
 `
 

@@ -64,5 +64,6 @@ export const TopoButton = styled.button`
 
     :hover{
         color: ${colorDarkBlue};
+        background: rgb(255, 255, 255);
     }
 `

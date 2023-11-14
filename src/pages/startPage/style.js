@@ -72,25 +72,7 @@ export const AcessContainer = styled.div`
 
     button{
         width: fit-content;
-
-        padding: 5px 10px;
-        border-radius: 5px;
-        border: none;
-
-        font-size: ${fontSizeMedium};
-        font-weight: bold;
-
         margin: 30px 0px 0px 0px;
-
-        background: ${colorDarkBlue};
-        color: rgb(255, 255, 255);
-
-        transition: background ${fastTransition};
-
-        :hover{
-            background: ${colorDarkGreen};
-            color: rgb(255, 255, 255);
-        }
     }
 
     div{
@@ -102,7 +84,6 @@ export const AcessContainer = styled.div`
     }
 `
 export const Button = styled.button`
-    margin: 20px 0px 0px 0px;
     padding: 5px 10px;
     border-radius: 5px;
 
@@ -114,7 +95,7 @@ export const Button = styled.button`
     transition: color ${fastTransition};
 
     :hover{
-        color: ${colorDarkBlue};
+        color: ${colorDarkBlue};    
     }
 `
 export const InputArea = styled.input`
