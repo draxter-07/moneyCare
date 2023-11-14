@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { mediumTransition, fontSizeMedium, fontSizeMediumLarge, fontSizePlus, webkitStyle } from "../../../../visualValues"
+import { fastTransition, mediumTransition, fontSizeMedium, fontSizeMediumLarge, fontSizePlus, webkitStyle } from "../../../../visualValues"
 
 export const InformacoesBasicas = styled.div`
     box-sizing: border-box;
@@ -54,7 +54,7 @@ export const NewTrans = styled.button`
 
     img{
         height: ${fontSizePlus};
-        transition: transform ${mediumTransition} linear;
+        transition: transform ${fastTransition} linear;
     }
 
     :hover{
