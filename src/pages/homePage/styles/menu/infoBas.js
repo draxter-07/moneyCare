@@ -80,5 +80,9 @@ export const NewTransDiv = styled.div`
 
     div{
         padding: 20px;
+        input{
+            font-size: ${fontSizeMedium};
+            margin: 0px;
+        }
     }
 `

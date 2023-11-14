@@ -118,23 +118,9 @@ export const Button = styled.button`
     }
 `
 export const InputArea = styled.input`
-    font-size: ${fontSizeMedium};
     display: ${atr => atr.$display ? "flex" : "none"};
-
-    margin: 10px 0px 0px 0px;
-    padding: 5px 10px;
-
-    border: 1px solid rgb(0, 0, 0, 0.2);
-    border-radius: 5px;
-
+    font-size: ${fontSizeMedium};
     width: 200px;
-
-    transition: border ${fastTransition};
-
-    :focus-visible, :hover{
-        outline: none;
-        border: 1px solid ${colorDarkGreen};
-    }
 
     @media (max-width: 1080px){
         width: 100%;
