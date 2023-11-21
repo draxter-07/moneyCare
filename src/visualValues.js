@@ -8,6 +8,7 @@ export const fontSizeMediumLarge = "28px";
 export const fontSizeMedium = "17px";
 
 export const fastTransition = "0.4s";
+export const fastMediumTransition = "0.6s"
 export const mediumTransition = "1s";
 
 export const backChangeTime = "3s";

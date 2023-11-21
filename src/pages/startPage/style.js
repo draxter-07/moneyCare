@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { colorDarkGreen, colorSoftGreen, colorDarkBlue, fontSizeMedium, fontSizeLarge, fontSizeMediumLarge, fastTransition, mediumTransition, backChangeTime } from "../../visualValues"
+import { colorDarkGreen, colorSoftGreen, colorDarkBlue, fontSizeMedium, fontSizeLarge, fontSizeMediumLarge, fastTransition, mediumTransition, backChangeTime, fastMediumTransition } from "../../visualValues"
 
 export const Background = styled.div`
     box-sizing: border-box;
@@ -27,11 +27,12 @@ export const Topo = styled.div`
 
     width: 100%;
     height: fit-content;
+    margin: 0px 50px 0px 0px;
         
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     @media (max-width: 1080px){
         flex-direction: column;
@@ -50,7 +51,35 @@ export const Logo = styled.div`
         margin: 0px 0px 20px 0px;
     }
 `
+export const TopoButton = styled.button`
+    width: fit-content;
+    height: fit-content;
+
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+
+    font-size: ${fontSizeMedium};
+    font-weight: bold;
+
+    color: ${colorDarkGreen};
+    background: rgb(255, 255, 255);
+
+    transition: color ${fastTransition};
+
+    :hover{
+        color: ${colorDarkBlue};
+        background: rgb(255, 255, 255);
+    }
+`
 export const AcessContainer = styled.div`
+    @keyframes loading{
+        0% {box-shadow: none}
+        100% {box-shadow: 0px 0px 15px 3px ${colorDarkBlue}}
+    }   
+
+    animation: ${atr => atr.$loading ? `loading ${mediumTransition} infinite alternate linear;` : "none"};
+
     box-sizing: border-box;
     height: fit-content;
     width: fit-content;
@@ -101,10 +130,18 @@ export const Button = styled.button`
     }
 `
 export const InputArea = styled.input`
+    @keyframes wrongInput{
+        0% {box-shadow: none}
+        100% {box-shadow: 0px 0px 5px 0px rgb(255, 0, 0)}
+    }
+
     display: ${atr => atr.$display ? "flex" : "none"};
     font-size: ${fontSizeMedium};
     width: 200px;
     margin: 10px 0px 0px 0px;
+
+    animation: ${atr => atr.$wrong ? `wrongInput ${fastMediumTransition} 2 alternate linear;` : "none"};
+
     @media (max-width: 1080px){
         width: 100%;
     }
