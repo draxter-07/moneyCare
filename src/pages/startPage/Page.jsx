@@ -38,11 +38,24 @@ export default function StartPage(){
             setWrongPass(false)
         }
         if(userEmail.length != 0 && userPassword.length != 0){
-            setLoadingAnimation(!loadingAnimation)
+            setLoadingAnimation(!loadingAnimation);
             let logObj = {email: userEmail, password: userPassword};
-            axios.post("http://localhost:5000" + "/login", logObj)
+            await axios.post("http://localhost:5000" + "/login", logObj)
                 .then(resposta => {console.log(resposta.data); changeWindow()})
-                .catch(response => {changeWindow();})
+                .catch(async response => {
+                    if(response.response.status == 402){
+                        setWrongUser(!wrongUser)
+                        await sleep(1000)
+                        setWrongUser(false)
+                        setLoadingAnimation(false)
+                    }
+                    else if(response.response.status == 401){
+                        setWrongPass(!wrongPass)
+                        await sleep(1000)
+                        setWrongPass(false)
+                        setLoadingAnimation(false)
+                    }else{changeWindow()};
+                })
         }
         
     }
