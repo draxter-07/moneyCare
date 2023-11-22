@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { colorSoftGreen, colorDarkBlue, colorDarkGreen } from "../../../visualValues"
+import { colorSoftGreen, colorDarkBlue, colorDarkGreen, fontSizeMediumLarge } from "../../../visualValues"
 
 export const Background = styled.div`
     box-sizing: border-box;
@@ -25,5 +25,10 @@ export const Background = styled.div`
     ins{
         display: block;
         width: 250px;
+    }
+    span{
+        font-size: ${fontSizeMediumLarge};
+        margin: 50px 0px 0px 0px;
+        color: ${colorDarkBlue};
     }
 `

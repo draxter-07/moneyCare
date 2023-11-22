@@ -1,6 +1,7 @@
 import { Background, Topo, TopoButton, AcessContainer, Logo, Button, InputArea } from "./style.js"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
+import axios from "axios"
 
 import TransitionScreen from "../transitionScreen/Page.jsx"
 
@@ -38,6 +39,10 @@ export default function StartPage(){
         }
         if(userEmail.length != 0 && userPassword.length != 0){
             setLoadingAnimation(!loadingAnimation)
+            let logObj = {email: userEmail, password: userPassword};
+            axios.post("http://localhost:5000" + "/login", logObj)
+                .then(resposta => {console.log(resposta.data); changeWindow()})
+                .catch(response => {changeWindow();})
         }
         
     }

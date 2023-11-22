@@ -21,6 +21,7 @@ export default function StartPage(){
     const [openNewTrans, setOpenNewTrans] = useState(false);
     const [infoBas, setInfoBas] = useState([]);
     const [infoDet, setInfoDet] = useState([]);
+    const [transitionText, setTransitionText] = useState("");
     const Dat = new Date();
 
     const greenColorMoney = "rgb(0, 200, 150)";
@@ -34,6 +35,7 @@ export default function StartPage(){
     }
 
     async function changeWindow(){
+        setTransitionText("Até mais! :)")
         setTransitionChange("0vh");
         await sleep(1000);
         navigate("/");
@@ -51,16 +53,17 @@ export default function StartPage(){
     useEffect(() => {
         axios.get("http://localhost:5000/home")
             .then(resposta => {
+                setTransitionText("Olá, " + resposta.data.userInfo.name + " :)");
                 setInfoBas(resposta.data.infoBas); 
                 setInfoDet(resposta.data.infoDet); 
                 changeTrans()})
-            .catch(response => alert(response.message));
+            .catch(response => setTransitionText("Desculpe! Não consegui me conectar à base de dados :("))
         }, []
     );
 
     return(
         <>
-        <TransitionScreen top={transitionChange}/>
+        <TransitionScreen top={transitionChange} text={transitionText}/>
         <Background blockBack={blockBackChange}>
             <Topo>
                 <Logo>MoneyCare</Logo>
