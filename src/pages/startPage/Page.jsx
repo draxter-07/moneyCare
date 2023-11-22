@@ -1,4 +1,4 @@
-import { Background, Topo, TopoButton, AcessContainer, Logo, Button, InputArea } from "./style.js"
+import { Background, Topo, TopoButton, AcessContainer, Logo, Button, InputArea, Alert } from "./style.js"
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios"
@@ -16,6 +16,9 @@ export default function StartPage(){
     const [wrongPass, setWrongPass] = useState(false)
     const [wrongConfPass, setWrongConfPass] = useState(false)
     const [loadingAnimation, setLoadingAnimation] = useState(false)
+    const [showAlert, setShowAlert] = useState(false)
+    const [alertText, setAlertText] = useState("")
+    const [buttonDis, setButtonDis] = useState(false)
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeWindow(){
@@ -28,14 +31,28 @@ export default function StartPage(){
         let userEmail = e.target.parentElement.children[0].children[1].value
         let userPassword = e.target.parentElement.children[0].children[2].value
         if(userEmail.length == 0){
+            setButtonDis(true)
             setWrongEmail(!wrongEmail);
+            setAlertText("Não se esqueça de colocar seu email ;)")
+            setShowAlert(true)
             await sleep(1000)
             setWrongEmail(false)
+            setLoadingAnimation(false)
+            await sleep(4000)
+            setShowAlert(false)
+            setButtonDis(false)
         }
         if(userPassword.length == 0){
+            setButtonDis(true)
             setWrongPass(!wrongPass);
+            setAlertText("Não se esqueça de colocar sua senha ;)")
+            setShowAlert(true)
             await sleep(1000)
             setWrongPass(false)
+            setLoadingAnimation(false)
+            await sleep(4000)
+            setShowAlert(false)
+            setButtonDis(false)
         }
         if(userEmail.length != 0 && userPassword.length != 0){
             setLoadingAnimation(!loadingAnimation);
@@ -44,10 +61,16 @@ export default function StartPage(){
                 .then(resposta => {console.log(resposta.data); changeWindow()})
                 .catch(async response => {
                     if(response.response.status == 402){
-                        setWrongUser(!wrongUser)
+                        setButtonDis(true)
+                        setWrongEmail(!wrongEmail)
+                        setAlertText("Não encontrei seu email :(")
+                        setShowAlert(true)
                         await sleep(1000)
-                        setWrongUser(false)
+                        setWrongEmail(false)
                         setLoadingAnimation(false)
+                        await sleep(4000)
+                        setShowAlert(false)
+                        setButtonDis(false)
                     }
                     else if(response.response.status == 401){
                         setWrongPass(!wrongPass)
@@ -107,7 +130,7 @@ export default function StartPage(){
                 </div>
             </Topo>
 
-            <AcessContainer $loading={loadingAnimation}>
+            <AcessContainer $loading={loadingAnimation} disabled={buttonDis}>
                     {openSignUp ? "Crie uma conta" : "Entre na sua conta"}
                     <div>
                         <InputArea placeholder="Nome" $display={openSignUp} $wrong={wrongName}></InputArea>
@@ -115,11 +138,15 @@ export default function StartPage(){
                         <InputArea placeholder="Senha" $display={true} $wrong={wrongPass}></InputArea>
                         <InputArea placeholder="Confirme sua senha" $display={openSignUp} $wrong={wrongConfPass}></InputArea>
                     </div>
-                    <button onClick={(e) => openSignUp ? signUp(e) : logIn(e)}>{openSignUp ? "Criar" : "Entrar"}</button>
+                    <button disabled={buttonDis} onClick={(e) => openSignUp ? signUp(e) : logIn(e)}>{openSignUp ? "Criar" : "Entrar"}</button>
             </AcessContainer>
 
             <Button onClick={() => setOpenSignUp(!openSignUp)}>{openSignUp ? "Entrar em uma conta" : "Criar uma conta"}</Button>
         </Background>
+
+        <Alert $showUp={showAlert}>
+            {alertText}
+        </Alert>
         </>
     )
 }

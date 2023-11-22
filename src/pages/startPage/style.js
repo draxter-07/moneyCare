@@ -102,6 +102,8 @@ export const AcessContainer = styled.div`
     button{
         width: fit-content;
         margin: 30px 0px 0px 0px;
+        opacity: ${atr => atr.disabled ? "0" : "1"};
+        transition: opacity ${fastTransition};
     }
 
     div{
@@ -145,4 +147,27 @@ export const InputArea = styled.input`
     @media (max-width: 1080px){
         width: 100%;
     }
+`
+
+export const Alert = styled.div`
+    @keyframes changeOpacity{
+        0%{opacity: 0}
+        10%{opacity: 1}
+        90%{opacity: 1}
+        100%{opacity: 0}
+    }
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 20px;
+
+    font-size: ${fontSizeMedium};
+    font-weight: bold;
+
+    opacity: 0;
+
+    animation: ${atr => atr.$showUp ? `changeOpacity 5s 1 linear;` : "none"};
 `
