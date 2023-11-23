@@ -21,10 +21,22 @@ export default function StartPage(){
     const [buttonDis, setButtonDis] = useState(false)
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
+
     async function changeWindow(){
         setTransitionChange("0vh"); 
         await sleep(1000);
         navigate(homeURL);
+    }
+
+    function isEmail(email){
+        let before = email;
+        let after = email.replaceAll("@")
+        if(before == after){
+            return false
+        }
+        else{
+            return true
+        }
     }
 
     async function inputError(functionsArray, text){
@@ -56,6 +68,9 @@ export default function StartPage(){
         else if(userPassword.length == 0){
             await inputError([setWrongPass], "Ops, você esqueceu de colocar sua senha :)")
         }
+        else if(!(isEmail(userEmail))){
+            await inputError([setWrongEmail], "Ops, preencha o email corretamente :)")
+        }
         else{
             setLoadingAnimation(!loadingAnimation);
             setButtonDis(true)
@@ -82,33 +97,29 @@ export default function StartPage(){
         let userEmail = e.target.parentElement.children[0].children[1].value
         let userPassword = e.target.parentElement.children[0].children[2].value
         let userConfPassword = e.target.parentElement.children[0].children[3].value
-        if(userName.length == 0){
-            setWrongName(!wrongName);
-            await sleep(1000)
-            setWrongName(false)
+        if(userName.length == 0 || userEmail.length == 0 || userPassword.length == 0 || userConfPassword.length == 0){
+            await inputError([setWrongName, setWrongEmail, setWrongPass, setWrongConfPass], "Ops, você esqueceu de completar todos os campos :)")
         }
-        if(userEmail.length == 0){
-            setWrongEmail(!wrongEmail);
-            await sleep(1000)
-            setWrongEmail(false)
+        else if(!(isEmail(userEmail))){
+            await inputError([setWrongEmail], "Ops, preencha o email corretamente :)")
         }
-        if(userPassword.length == 0){
-            setWrongPass(!wrongPass);
-            await sleep(1000)
-            setWrongPass(false)
-        }
-        if(userConfPassword.length == 0){
-            setWrongConfPass(!wrongConfPass);
-            await sleep(1000)
-            setWrongConfPass(false)
-        }
-        if(userPassword != userConfPassword){
-            setWrongConfPass(!wrongConfPass);
-            await sleep(1000)
-            setWrongConfPass(false)
+        else if(userPassword != userConfPassword){
+            await inputError([setWrongConfPass], "Ops, as senhas devem ser iguais :)")
         }
         else{
-            setLoadingAnimation(!loadingAnimation)
+            setLoadingAnimation(!loadingAnimation);
+            setButtonDis(true)
+            let logObj = {name: userName, email: userEmail, password: userPassword};
+            await axios.post("http://localhost:5000" + "/signup", logObj)
+                .then(resposta => {console.log(resposta)})
+                .catch(async response => {
+                    if (response.code == "ERR_NETWORK"){
+                        await inputError([], "Ops, não consegui me conectar ao servidor :(")
+                    }
+                    else if(response.response.status == 409){
+                        await inputError([setWrongEmail], "Ops, esse email já está vinculado a uma conta :(")
+                    }
+                })
         }
     }
 
