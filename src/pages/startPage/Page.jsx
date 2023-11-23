@@ -27,57 +27,51 @@ export default function StartPage(){
         navigate(homeURL);
     }
 
+    async function inputError(functionsArray, text){
+        setButtonDis(true)
+        for(let i = 0; i < functionsArray.length; i++){
+            functionsArray[i](true)
+        }
+        setAlertText(text)
+        setShowAlert(true)
+        await sleep(1000)
+        for(let i = 0; i < functionsArray.length; i++){
+            functionsArray[i](false)
+        }
+        setLoadingAnimation(false)
+        await sleep(4000)
+        setShowAlert(false)
+        setButtonDis(false) 
+    }
+
     async function logIn(e){
         let userEmail = e.target.parentElement.children[0].children[1].value
         let userPassword = e.target.parentElement.children[0].children[2].value
-        if(userEmail.length == 0){
-            setButtonDis(true)
-            setWrongEmail(!wrongEmail);
-            setAlertText("Não se esqueça de colocar seu email ;)")
-            setShowAlert(true)
-            await sleep(1000)
-            setWrongEmail(false)
-            setLoadingAnimation(false)
-            await sleep(4000)
-            setShowAlert(false)
-            setButtonDis(false)
+        if(userEmail.length == 0 && userPassword.length == 0){
+            await inputError([setWrongEmail, setWrongPass], "Ops, você esqueceu de colocar seu email e sua senha :)")
         }
-        if(userPassword.length == 0){
-            setButtonDis(true)
-            setWrongPass(!wrongPass);
-            setAlertText("Não se esqueça de colocar sua senha ;)")
-            setShowAlert(true)
-            await sleep(1000)
-            setWrongPass(false)
-            setLoadingAnimation(false)
-            await sleep(4000)
-            setShowAlert(false)
-            setButtonDis(false)
+        else if(userEmail.length == 0){
+            await inputError([setWrongEmail], "Ops, você esqueceu de colocar seu email :)")
         }
-        if(userEmail.length != 0 && userPassword.length != 0){
+        else if(userPassword.length == 0){
+            await inputError([setWrongPass], "Ops, você esqueceu de colocar sua senha :)")
+        }
+        else{
             setLoadingAnimation(!loadingAnimation);
+            setButtonDis(true)
             let logObj = {email: userEmail, password: userPassword};
             await axios.post("http://localhost:5000" + "/login", logObj)
                 .then(resposta => {console.log(resposta.data); changeWindow()})
                 .catch(async response => {
-                    if(response.response.status == 402){
-                        setButtonDis(true)
-                        setWrongEmail(!wrongEmail)
-                        setAlertText("Não encontrei seu email :(")
-                        setShowAlert(true)
-                        await sleep(1000)
-                        setWrongEmail(false)
-                        setLoadingAnimation(false)
-                        await sleep(4000)
-                        setShowAlert(false)
-                        setButtonDis(false)
+                    if (response.code == "ERR_NETWORK"){
+                        await inputError([], "Ops, não consegui me conectar ao servidor :(")
+                    }
+                    else if(response.response.status == 402){
+                        await inputError([setWrongEmail], "Ops, não consegui encontrar seu email :(")
                     }
                     else if(response.response.status == 401){
-                        setWrongPass(!wrongPass)
-                        await sleep(1000)
-                        setWrongPass(false)
-                        setLoadingAnimation(false)
-                    }else{changeWindow()};
+                        await inputError([setWrongPass], "Ops, a senha está errada :(")
+                    }
                 })
         }
         
@@ -135,8 +129,8 @@ export default function StartPage(){
                     <div>
                         <InputArea placeholder="Nome" $display={openSignUp} $wrong={wrongName}></InputArea>
                         <InputArea placeholder="Email" $display={true} $wrong={wrongEmail}></InputArea>
-                        <InputArea placeholder="Senha" $display={true} $wrong={wrongPass}></InputArea>
-                        <InputArea placeholder="Confirme sua senha" $display={openSignUp} $wrong={wrongConfPass}></InputArea>
+                        <InputArea type="password" placeholder="Senha" $display={true} $wrong={wrongPass}></InputArea>
+                        <InputArea type="password" placeholder="Confirme sua senha" $display={openSignUp} $wrong={wrongConfPass}></InputArea>
                     </div>
                     <button disabled={buttonDis} onClick={(e) => openSignUp ? signUp(e) : logIn(e)}>{openSignUp ? "Criar" : "Entrar"}</button>
             </AcessContainer>

@@ -50,6 +50,16 @@ export default function StartPage(){
         }
     }
 
+    function changeMonth(e){
+        let circle = e.target;
+        for(let i = 0; i < e.target.parentElement.children.length; i++){
+            if( e.target.parentElement.children[i].style.r == "0.7%"){
+                e.target.parentElement.children[i].style.r = "0.5%";
+            }
+        }
+        circle.style.r = "0.7%";
+    }
+
     useEffect(() => {
         axios.get("http://localhost:5000/home")
             .then(resposta => {
@@ -128,7 +138,7 @@ export default function StartPage(){
                                 <g>     
                                     {dado.graph.body.map(data =>
                                     <>
-                                        <circle cx={data.cx} cy={data.porcentage} r="0.5%">
+                                        <circle cx={data.cx} cy={data.porcentage} r="0.5%" onClick={(e) => changeMonth(e)}>
                                             <title>{data.title}</title>
                                         </circle>
                                         {dado.graph.body.indexOf(data) > 0 ? <line x1={dado.graph.body[dado.graph.body.indexOf(data) - 1].cx} x2={data.cx} y1={dado.graph.body[dado.graph.body.indexOf(data) - 1].porcentage} y2={data.porcentage} stroke-width="1" stroke="rgb(0, 0, 0)"></line> : <></>}
