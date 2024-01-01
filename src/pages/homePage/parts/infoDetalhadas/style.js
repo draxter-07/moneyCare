@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { colorDarkGreen, fontSizeMedium, fontSizeMediumLarge, webkitStyle } from "../../../../visualValues"
+import { fontSizeLarge, fontSizeMedium, webkitStyle } from "../../../../visualValues"
 
-export const InformacoesDetalhadas = styled.div`
+export const SectionDiv = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -16,7 +16,7 @@ export const InformacoesDetalhadas = styled.div`
         height: 600px;
     }
 `
-export const InfoDet = styled.div`
+export const Content = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -40,13 +40,13 @@ export const InfoDet = styled.div`
         margin: 0px 0px 10px 0px;
     }
 `
-export const Dets = styled.div`
+export const Category = styled.div`
     display: flex;
     flex-direction: column;
     height: 90%;
 `
 export const Titulo = styled.div`
-    font-size: ${fontSizeMediumLarge};
+    font-size: ${fontSizeLarge};
     margin: 0px 0px 20px 0px;
 `
 export const Linhas = styled.div`
@@ -71,7 +71,7 @@ export const Total = styled.div`
     justify-content: flex-end;
 
     color: ${atr => atr.color};
-    font-size: ${fontSizeMediumLarge}
+    font-size: ${fontSizeLarge}
 `
 export const Linha = styled.div`
     box-sizing: border-box;

@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { fastTransition } from "../../../../../visualValues"
+import { transitionFast } from "../../../../../visualValues"
 
-export const Grafico = styled.div`
+export const SectionDiv = styled.div`
     box-sizing: border-box;
     background: rgb(255, 255, 255);
     width: 100%;
@@ -17,7 +17,7 @@ export const Grafico = styled.div`
             title{
                 font-size: 200px;
             }
-            transition: r ${fastTransition};
+            transition: r ${transitionFast};
         }
         text{
             font-size: 13px;

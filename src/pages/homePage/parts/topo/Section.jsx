@@ -1,4 +1,4 @@
-import { SectionDiv, Content, Logo, Buttons } from "./style"
+import { SectionDiv, Content, Logo, Button } from "./style"
 
 export default function Topo(atr){
     return(
@@ -6,12 +6,12 @@ export default function Topo(atr){
             <Logo>MoneyCare</Logo>
             <Content>
                 <div>
-                    <Buttons onClick={() => atr.setOpenConfig(!atr.openConfig)}>?</Buttons>
+                    <Button onClick={() => atr.setOpenConfig(!atr.openConfig)}>?</Button>
                 </div>
                 <div>
-                    <Buttons onClick={() => atr.setOpenConfig(!atr.openConfig)}>Configurações</Buttons>
+                    <Button onClick={() => atr.setOpenConfig(!atr.openConfig)}>Configurações</Button>
                 </div>
-                <Buttons onClick={atr.changeWindow}>Sair</Buttons>
+                <Button onClick={atr.changeWindow}>Sair</Button>
             </Content>
         </SectionDiv>
     )
