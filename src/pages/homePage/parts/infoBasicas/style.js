@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { fastTransition, mediumTransition, fontSizeMedium, fontSizeMediumLarge, fontSizePlus, webkitStyle } from "../../../../visualValues"
+import { transitionFast, transitionSlow, fontSizeSmall, fontSizeLarge, webkitStyle } from "../../../../visualValues"
 
-export const InformacoesBasicas = styled.div`
+export const SectionDiv = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -15,7 +15,7 @@ export const InformacoesBasicas = styled.div`
         flex-wrap: wrap;
     }
 `
-export const InfoBas = styled.div`
+export const Info = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -31,12 +31,12 @@ export const InfoBas = styled.div`
     margin: 30px 0px 0px 0px;
 
     div:nth-child(1){
-        font-size: ${fontSizeMedium};
+        font-size: ${fontSizeSmall};
         margin: 0px 0px 10px 0px;
     }
 
     div:nth-child(2){
-        font-size: ${fontSizeMediumLarge};
+        font-size: ${fontSizeLarge};
         color: ${atr => atr.color};
     }
 `
@@ -53,8 +53,8 @@ export const NewTrans = styled.button`
     margin: 30px 0px 0px 0px;
 
     img{
-        height: ${fontSizePlus};
-        transition: transform ${fastTransition} linear;
+        height: 15px;
+        transition: transform ${transitionFast} linear;
     }
 
     :hover{
@@ -77,14 +77,14 @@ export const NewTransDiv = styled.div`
 
     overflow: hidden;
 
-    transition: max-height ${mediumTransition} linear;
+    transition: max-height ${transitionSlow} linear;
 
     div{
         display: flex;
         flex-direction: column;
         padding: 20px;
         input{
-            font-size: ${fontSizeMedium};
+            font-size: ${fontSizeSmall};
         }
         *{
             margin: 10px 0px 0px 0px;

@@ -1,13 +1,14 @@
-import { Background } from "./styles/background/background.js"
-import { Topo, Logo, Topodiv, TopoButton } from "./styles/topo/topo.js"
-import { Menu } from "./styles/menu/menu.js"
-import { ConfigDiv } from "./styles/menu/config.js"
-import { InformacoesBasicas, InfoBas, NewTrans, NewTransDiv } from "./styles/menu/infoBas.js"
-import { InformacoesDetalhadas, InfoDet, Dets, Titulo, Linhas, Linha, Total } from "./styles/menu/infoDet.js"
-import { Grafico } from "./styles/menu/grafico.js"
-import plusIMG from "../../imgs/plusIcon.png"
+import { Background } from "./parts/structureParts/background.js"
+import Topo from "./parts/topo/Section.jsx"
+import ConfigDiv from "./parts/structureParts/configDiv/Section.jsx"
+import InfoBas from "./parts/infoBasicas/Section.jsx"
 
-import TransitionScreen from "../transitionScreen/Page.jsx"
+import { Menu } from "./parts/structureParts/menu/menu.js"
+import { NewTransDiv } from "./parts/infoBasicas/style.js"
+import { InformacoesDetalhadas, InfoDet, Dets, Titulo, Linhas, Linha, Total } from "./parts/infoDetalhadas/infoDet.js"
+import { Grafico } from "./parts/infoDetalhadas/grafico/grafico.js"
+
+import TransitionScreen from "../components/transitionScreen/Page.jsx"
 
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
@@ -26,7 +27,6 @@ export default function StartPage(){
 
     const greenColorMoney = "rgb(0, 200, 150)";
     const redColorMoney = "rgb(240, 0, 0)";
-    const blackColorMoney = "rgb(0, 0, 0)";
 
     const sleep = ms => new Promise(r => setTimeout(r, ms));
     async function changeTrans(){
@@ -39,15 +39,6 @@ export default function StartPage(){
         setTransitionChange("0vh");
         await sleep(1000);
         navigate("/");
-    }
-
-    function returnType(type){
-        if(type == 0){
-            return redColorMoney;
-        }
-        else{
-            return greenColorMoney;
-        }
     }
 
     function changeMonth(e){
@@ -75,32 +66,13 @@ export default function StartPage(){
         <>
         <TransitionScreen top={transitionChange} text={transitionText}/>
         <Background blockBack={blockBackChange}>
-            <Topo>
-                <Logo>MoneyCare</Logo>
-                <Topodiv>
-                    <div>
-                        <TopoButton onClick={() => setOpenConfig(!openConfig)}>?</TopoButton>
-                    </div>
-                    <div>
-                        <TopoButton onClick={() => setOpenConfig(!openConfig)}>Configurações</TopoButton>
-                    </div>
-                    <TopoButton onClick={changeWindow}>Sair</TopoButton>
-                </Topodiv>
-            </Topo>
+            <Topo setOpenConfig={setOpenConfig} openConfig={openConfig} changeWindow={changeWindow}/>
 
             <Menu>
-                <ConfigDiv $display={openConfig}>
-                    <div>
-                        <button onClick={() => setBlockBackChange(!blockBackChange)}>parar fundo</button>
-                    </div>
-                </ConfigDiv>
+                <ConfigDiv openConfig={openConfig} setBlockBackChange={setBlockBackChange} blockBackChange={blockBackChange}/>
                 
-                <InformacoesBasicas>
-                    {infoBas.map(dado =>
-                        <InfoBas color={returnType(dado.type)}><div>{dado.name}</div><div>{dado.value}</div></InfoBas>
-                    )}
-                    <NewTrans onClick={() => setOpenNewTrans(!openNewTrans)}><img src={plusIMG}></img></NewTrans>
-                </InformacoesBasicas>
+                <InfoBas infoBas={infoBas} setOpenNewTrans={setOpenNewTrans} openNewTrans={openNewTrans}/>
+
                 <NewTransDiv $display={openNewTrans}>
                     <div>
                         <input placeholder="Nome da transação"></input>

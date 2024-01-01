@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { fastTransition } from "../../../../visualValues"
+import { fastTransition } from "../../../../../visualValues"
 
 export const Grafico = styled.div`
     box-sizing: border-box;

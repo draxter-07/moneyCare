@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { colorDarkGreen, colorDarkBlue, fontSizeMedium, fontSizeMediumLarge, fastTransition } from "../../../../visualValues"
+import { colorMain, colorSecundary, fontSizeSmall, fontSizeLarge, transitionFast } from "../../../../visualValues"
 
-export const Topo = styled.div`
+export const SectionDiv = styled.div`
     box-sizing: border-box;
 
     width: 100%;
@@ -17,7 +17,7 @@ export const Topo = styled.div`
         align-items: center;
     }
 `
-export const Topodiv = styled.div`
+export const Content = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -36,9 +36,9 @@ export const Topodiv = styled.div`
     }
 `
 export const Logo = styled.div`
-    font-size: ${fontSizeMediumLarge};
+    font-size: ${fontSizeLarge};
     font-weight: bold;
-    color: ${colorDarkBlue};
+    color: ${colorSecundary};
 
     @media (max-width: 1080px){
         font-size: 45px;
@@ -46,7 +46,7 @@ export const Logo = styled.div`
         margin: 0px 0px 20px 0px;
     }
 `
-export const TopoButton = styled.button`
+export const Button = styled.button`
     width: fit-content;
     height: fit-content;
 
@@ -54,16 +54,16 @@ export const TopoButton = styled.button`
     border-radius: 5px;
     border: none;
 
-    font-size: ${fontSizeMedium};
+    font-size: ${fontSizeSmall};
     font-weight: bold;
 
-    color: ${colorDarkGreen};
+    color: ${colorMain};
     background: rgb(255, 255, 255);
 
-    transition: color ${fastTransition};
+    transition: color ${transitionFast};
 
     :hover{
-        color: ${colorDarkBlue};
+        color: ${colorSecundary};
         background: rgb(255, 255, 255);
     }
 `
