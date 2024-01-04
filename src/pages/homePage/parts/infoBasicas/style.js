@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { transitionFast, fontSizeSmall, fontSizeLarge, webkitStyle } from "../../../../visualValues"
+import { transitionFast, fontSizeSmall, fontSizeLarge, webkitStyle, fontSizeMedium } from "../../../../visualValues"
 
 export const SectionDiv = styled.div`
     box-sizing: border-box;
@@ -36,7 +36,7 @@ export const Info = styled.div`
     }
 
     div:nth-child(2){
-        font-size: ${fontSizeLarge};
+        font-size: ${fontSizeMedium};
         color: ${atr => atr.color};
     }
 `
@@ -53,7 +53,7 @@ export const NewTrans = styled.button`
     margin: 30px 0px 0px 0px;
 
     img{
-        height: 15px;
+        height: 50px;
         transition: transform ${transitionFast} linear;
     }
 

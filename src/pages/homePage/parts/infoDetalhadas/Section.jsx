@@ -1,5 +1,5 @@
 import { Category, Content, SectionDiv, Titulo, Linhas, Linha, Total } from "./style";
-import Grafico from "./grafico/Section";
+import Grafico from "./grafico/Section.jsx";
 
 export default function InfoDet(atr){
     const greenColorMoney = "rgb(0, 200, 150)";

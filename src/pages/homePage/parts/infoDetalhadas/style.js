@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { fontSizeLarge, fontSizeMedium, webkitStyle } from "../../../../visualValues"
+import { fontSizeLarge, fontSizeMedium, fontSizeSmall, webkitStyle } from "../../../../visualValues"
 
 export const SectionDiv = styled.div`
     box-sizing: border-box;
@@ -46,7 +46,7 @@ export const Category = styled.div`
     height: 90%;
 `
 export const Titulo = styled.div`
-    font-size: ${fontSizeLarge};
+    font-size: ${fontSizeMedium};
     margin: 0px 0px 20px 0px;
 `
 export const Linhas = styled.div`
@@ -71,7 +71,7 @@ export const Total = styled.div`
     justify-content: flex-end;
 
     color: ${atr => atr.color};
-    font-size: ${fontSizeLarge}
+    font-size: ${fontSizeMedium}
 `
 export const Linha = styled.div`
     box-sizing: border-box;
@@ -83,7 +83,7 @@ export const Linha = styled.div`
     flex-direction: column;
     justify-content: space-between;
 
-    font-size: ${fontSizeMedium};
+    font-size: ${fontSizeSmall};
 
     div:nth-child(2){
         color: ${atr => atr.color};

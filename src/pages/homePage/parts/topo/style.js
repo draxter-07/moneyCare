@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { colorMain, colorSecundary, fontSizeSmall, fontSizeLarge, transitionFast } from "../../../../visualValues"
+import { colorMain, colorSecundary, fontSizeSmall, fontSizeLarge, transitionFast, fontSizeMedium } from "../../../../visualValues"
 
 export const SectionDiv = styled.div`
     box-sizing: border-box;
@@ -36,7 +36,7 @@ export const Content = styled.div`
     }
 `
 export const Logo = styled.div`
-    font-size: ${fontSizeLarge};
+    font-size: ${fontSizeMedium};
     font-weight: bold;
     color: ${colorSecundary};
 

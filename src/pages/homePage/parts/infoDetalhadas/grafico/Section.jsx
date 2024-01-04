@@ -1,4 +1,4 @@
-import { SectionDiv } from "../style";
+import { SectionDiv } from "./style.js";
 
 export default function Grafico(atr){
     function changeMonth(e){
@@ -11,6 +11,7 @@ export default function Grafico(atr){
         circle.style.r = "0.7%";
     }
     
+    return(
     <SectionDiv>
         <svg>
         <g>     
@@ -37,4 +38,5 @@ export default function Grafico(atr){
         <line x1="5%" x2="95%" y1="5%" y2="5%" stroke-width="1" stroke="rgb(0, 0, 0, 0.2)"></line>
         </svg>
     </SectionDiv>
+    )
 }

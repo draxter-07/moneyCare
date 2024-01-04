@@ -38,11 +38,11 @@ export default function StartPage(){
     }
 
     useEffect(() => {
-        axios.get("http://localhost:5000/home")
+        axios.get("http://localhost:5002/home")
             .then(resposta => {
                 setTransitionText("Olá, " + resposta.data.userInfo.name + " :)");
                 setInfoBas(resposta.data.infoBas); 
-                setInfoDet(resposta.data.infoDet); 
+                setInfoDet(resposta.data.infoDet);
                 changeTrans()})
             .catch(response => setTransitionText("Desculpe! Não consegui me conectar à base de dados :("))
         }, []
